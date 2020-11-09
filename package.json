@@ -1,0 +1,26 @@
+{
+  "name": "avla-examen-backend",
+  "version": "1.0.0",
+  "description": "mi examen backend",
+  "main": "src/index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vchipana/avla-examen-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vchipana/avla-examen-backend/issues"
+  },
+  "homepage": "https://github.com/vchipana/avla-examen-backend#readme"
+}
