@@ -5,7 +5,7 @@ module.exports = {
     var connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '...',
+      password: 'vchipana',
       database: 'frontend_tareas',
       port: 3306
     });

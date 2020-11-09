@@ -3,7 +3,7 @@ CREATE DATABASE frontend_tareas;
 
 USE frontend_tareas;
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '...';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'vchipana';
 flush privileges;
 /************************************/
 
