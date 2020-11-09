@@ -16,10 +16,10 @@ CREATE TABLE Usuarios (
 );
 
 CREATE TABLE Tareas (
-  tareaID  int,
+  tareaID  int NOT NULL AUTO_INCREMENT,
   descripcion varchar(255),
   indCompletado varchar(1),
-  usuarioID int,
+  usuarioID int NULL,
   PRIMARY KEY (tareaID),
   FOREIGN KEY (usuarioID) REFERENCES Usuarios(usuarioID)
 );

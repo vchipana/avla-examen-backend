@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
 
@@ -44,6 +45,27 @@ app.get('/usuarios', function (req, res) {
   coneccionBD.conectar(
     connection => {
       connection.query('SELECT * FROM Usuarios', function (error, results, fields) {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(results);
+        }
+      });
+    },
+    error => {
+      res.send(error);
+    }
+  );
+});
+
+app.post('/tarea', function (req, res) {
+  coneccionBD.conectar(
+    connection => {
+      const consulta = `
+        INSERT INTO Tareas (descripcion, indCompletado, usuarioID) 
+        VALUES ("${req.body.descripcion}", "N", ${req.body.usuarioID || null})
+      `
+      connection.query(consulta, function (error, results, fields) {
         if (error) {
           res.send(error);
         } else {
