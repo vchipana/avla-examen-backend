@@ -58,6 +58,28 @@ app.get('/usuarios', function (req, res) {
   );
 });
 
+app.get('/tareas', function (req, res) {
+  coneccionBD.conectar(
+    connection => {
+      const consulta = `
+        SELECT * FROM Tareas 
+        LEFT JOIN Usuarios 
+        ON Tareas.usuarioID = Usuarios.usuarioID
+      `
+      connection.query(consulta, function (error, results, fields) {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(results);
+        }
+      });
+    },
+    error => {
+      res.send(error);
+    }
+  );
+});
+
 app.post('/tarea', function (req, res) {
   coneccionBD.conectar(
     connection => {
@@ -65,6 +87,24 @@ app.post('/tarea', function (req, res) {
         INSERT INTO Tareas (descripcion, indCompletado, usuarioID) 
         VALUES ("${req.body.descripcion}", "N", ${req.body.usuarioID || null})
       `
+      connection.query(consulta, function (error, results, fields) {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(results);
+        }
+      });
+    },
+    error => {
+      res.send(error);
+    }
+  );
+});
+
+app.delete('/tarea/:id', function (req, res) {
+  coneccionBD.conectar(
+    connection => {
+      const consulta = `DELETE FROM Tareas where tareaID=${req.params.id}`
       connection.query(consulta, function (error, results, fields) {
         if (error) {
           res.send(error);
