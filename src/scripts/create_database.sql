@@ -1,6 +1,5 @@
 /********* CREA LA BD ***************/
 CREATE DATABASE frontend_tareas;
-
 USE frontend_tareas;
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'vchipana';
@@ -12,14 +11,17 @@ CREATE TABLE Usuarios (
   usuarioID  int,
   nombres varchar(255),
   username varchar(255),
-  password varchar(255)
+  password varchar(255),
+  PRIMARY KEY (usuarioID)
 );
 
 CREATE TABLE Tareas (
   tareaID  int,
   descripcion varchar(255),
   indCompletado varchar(1),
-  usuarioID int
+  usuarioID int,
+  PRIMARY KEY (tareaID),
+  FOREIGN KEY (usuarioID) REFERENCES Usuarios(usuarioID)
 );
 /************************************/
 
